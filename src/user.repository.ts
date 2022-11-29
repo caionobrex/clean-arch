@@ -2,7 +2,7 @@ import { IUserRepository } from "./user-repository.interface";
 import User from "./user.entity";
 
 export default class UserRepository implements IUserRepository {
-  private readonly users: User[] = [new User('Caio', 'Nobre', '073.374.603.92', 18)];
+  private readonly users: User[] = [new User('Caio', 'Nobre', '100.100.100.92', 18)];
 
   createOne(user: User): User {
     this.users.push(user);

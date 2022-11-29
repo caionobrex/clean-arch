@@ -12,9 +12,9 @@ describe('Deposit', () => {
       expect(() => new Deposit(userRepository).execute('', 20)).toThrow(Error);
     });
     it('should', () => {
-      const user = userRepository.findOneByCpf('073.374.603.92');
-      new Deposit(userRepository).execute('073.374.603.92', 20);
-      expect(userRepository.findOneByCpf('073.374.603.92')!.balance - 20).toBe(user!.balance);
+      const user = userRepository.findOneByCpf('100.100.100.92');
+      new Deposit(userRepository).execute('100.100.100.92', 20);
+      expect(userRepository.findOneByCpf('100.100.100.92')!.balance - 20).toBe(user!.balance);
     })
   });
 });
