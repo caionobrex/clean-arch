@@ -1,7 +1,7 @@
-import Withdraw from '../src/withdraw.usecase';
-import UserRepository from '../src/user.repository';
-import { IUserRepository } from '../src/user-repository.interface';
-import User from '../src/user.entity';
+import Withdraw from '../src/domain/usecases/withdraw.usecase';
+import UserRepository from '../src/domain/repositories/user.repository';
+import { IUserRepository } from '../src/domain/interfaces/user-repository.interface';
+import User from '../src/domain/entities/user.entity';
 
 describe('Withdraw', () => {
   let userRepository: IUserRepository;

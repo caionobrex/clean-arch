@@ -1,6 +1,6 @@
-import { Deposit } from "../src/deposit.usecase";
-import { IUserRepository } from "../src/user-repository.interface";
-import UserRepository from "../src/user.repository";
+import { Deposit } from "../src/domain/usecases/deposit.usecase";
+import { IUserRepository } from "../src/domain/interfaces/user-repository.interface";
+import UserRepository from "../src/domain/repositories/user.repository";
 
 describe('Deposit', () => {
   let userRepository: IUserRepository;
