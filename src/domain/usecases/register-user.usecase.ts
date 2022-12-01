@@ -5,7 +5,7 @@ export class RegisterUser {
   constructor(private readonly userRepository: IUserRepository) {}
 
   execute(firstName: string, lastName: string, cpf: string, age: number): User {
-    const user = new User(firstName, lastName, cpf, age);
+    const user = new User(1, firstName, lastName, cpf, age);
     return this.userRepository.createOne(user);
   }
 }

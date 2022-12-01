@@ -9,7 +9,7 @@ export default class Product {
 
   get name() { return this._name; }
 
-  get price() { return this.price; }
+  get price() { return this._price; }
 
   set name(name: string) {
     if (name.length === 0) throw new Error('Product name cannot be empty.')

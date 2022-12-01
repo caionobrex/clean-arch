@@ -1,11 +1,16 @@
+import Order from "./order.entity";
+
 export default class User {
+  private id: number;
   private _firstName: string;
   private _lastName: string;
   private _cpf: string;
   private _age: number;
   private _balance: number;
+  private _orders: Order[]
 
-  constructor(firstName: string, lastName: string, cpf: string, age: number, balance: number = 0) {
+  constructor(id: number, firstName: string, lastName: string, cpf: string, age: number, balance: number = 0) {
+    this.id = id;
     this.firstName = firstName;
     this.lastName = lastName;
     this._cpf = cpf;

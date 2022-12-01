@@ -1,20 +1,36 @@
-import { RegisterUser } from "./src/register-user.usecase";
-import UserRepository from "./src/user.repository";
+import InMemoryProductRepository from "./src/application/repositories/in-memory.repository";
+import { CreateProductDto } from "./src/application/dtos/create-product.dto";
+import { ProductController } from "./src/application/controllers/product.controller";
+import expressApp from './src/infra/express'
+// import { DataSource } from "typeorm"
 
-class Controller {
-  register(name: string, lastName: string, cpf: string, age: number) {
-    const userRepository = new UserRepository();
-    new RegisterUser(userRepository).execute('Caio', 'Nobre', '100.100.100.92', 18);
-    new RegisterUser(userRepository).execute('Caio', 'Martins', '100.100.100.92', 20);
-    console.log(userRepository.findAll());
-  }
-}
+// const AppDataSource = new DataSource({
+//     type: "mysql",
+//     host: "localhost",
+//     port: 3306,
+//     username: "test",
+//     password: "test",
+//     database: "test",
+// })
 
-try {
-  const controller = new Controller();
-  if (process.argv[2] === 'register') {
-    controller.register('Caio', 'Nobre', '', 30);
-  }
-} catch (err) {
-  console.log(err);
-}
+// interface ICliProductControllerAdapter {
+//   createProduct(args: string[]): void
+// }
+
+// class CliProductControllerAdapter implements ICliProductControllerAdapter {
+//   constructor(private readonly productController: ProductController) {}
+
+//   createProduct(args: string[]): void {
+//     console.log(this.productController.createProduct(new CreateProductDto(args[2], +args[3])));
+//   }
+// }
+
+// try {
+//   new CliProductControllerAdapter(new ProductController(new InMemoryProductRepository())).createProduct(process.argv)
+// } catch (err) {
+//   console.log(err);
+// }
+
+expressApp.listen(3000, () => {
+  console.log(`Example app listening on port ${3000}`)
+})

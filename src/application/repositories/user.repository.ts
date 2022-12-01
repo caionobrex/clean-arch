@@ -1,15 +1,15 @@
-import { IUserRepository } from "../interfaces/user-repository.interface";
-import User from "../entities/user.entity";
+import { IUserRepository } from "../../domain/interfaces/user-repository.interface";
+import User from "../../domain/entities/user.entity";
 
 export default class UserRepository implements IUserRepository {
-  private readonly users: User[] = [new User('Caio', 'Nobre', '100.100.100.92', 18)];
+  private readonly users: User[] = [new User(1, 'Caio', 'Nobre', '100.100.100.92', 18)];
 
   createOne(user: User): User {
     this.users.push(user);
     return user;
   }
 
-  findOneByCpf(cpf: string): User | null | undefined {
+  async findOneByCpf(cpf: string): Promise<User | null | undefined> {
     return this.users.find((user: User) => user.cpf === cpf);
   }
 

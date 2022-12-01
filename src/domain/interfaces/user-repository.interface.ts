@@ -7,5 +7,5 @@ export interface IUserRepository {
 
   findAll(): User[];
 
-  findOneByCpf(cpf: string): User | null | undefined;
+  findOneByCpf(cpf: string): Promise<User | null | undefined>;
 }
