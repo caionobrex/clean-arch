@@ -1,16 +1,16 @@
 import Order from "./order.entity";
 
 export default class User {
-  private id: number;
+  private _id: number | string;
   private _firstName: string;
   private _lastName: string;
   private _cpf: string;
   private _age: number;
   private _balance: number;
-  private _orders: Order[]
+  private _orders: Order[];
 
   constructor(id: number, firstName: string, lastName: string, cpf: string, age: number, balance: number = 0) {
-    this.id = id;
+    this._id = id;
     this.firstName = firstName;
     this.lastName = lastName;
     this._cpf = cpf;
@@ -36,6 +36,8 @@ export default class User {
     if (age < 18) throw new Error(`User age can't be less than 18`);
     this._age = age;
   }
+
+  public get id(): number | string { return this._id; }
 
   public get cpf(): string { return this._cpf; }
 

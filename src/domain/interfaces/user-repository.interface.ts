@@ -8,4 +8,6 @@ export interface IUserRepository {
   findAll(): User[];
 
   findOneByCpf(cpf: string): Promise<User | null | undefined>;
+
+  findOneById(id: number | string): Promise<User>;
 }

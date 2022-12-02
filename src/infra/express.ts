@@ -21,4 +21,6 @@ app.get('/create-product', (req, res) => {
   new ExpressProductControllerAdapter(new ProductController(new InMemoryProductRepository())).createProduct(req, res)
 })
 
+app.post('/create-order', (req, res) => {})
+
 export default app

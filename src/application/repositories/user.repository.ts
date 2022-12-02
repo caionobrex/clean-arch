@@ -4,6 +4,10 @@ import User from "../../domain/entities/user.entity";
 export default class UserRepository implements IUserRepository {
   private readonly users: User[] = [new User(1, 'Caio', 'Nobre', '100.100.100.92', 18)];
 
+  findOneById(id: number | string): Promise<User> {
+    return Promise.resolve(this.users.find((user) => user.id === id))
+  }
+
   createOne(user: User): User {
     this.users.push(user);
     return user;
