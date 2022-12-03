@@ -10,4 +10,6 @@ export interface IUserRepository {
   findOneByCpf(cpf: string): Promise<User | null | undefined>;
 
   findOneById(id: number | string): Promise<User>;
+
+  findByEmail(email: string): Promise<User>;
 }

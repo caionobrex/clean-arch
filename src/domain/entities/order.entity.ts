@@ -1,16 +1,17 @@
 import Product from "./product.entity"
 import User from "./user.entity"
 
-enum OrderStatus {
+export enum OrderStatus {
   PENDING = 'PENDING',
   PAID = 'PAID',
 }
 
 export class OrderItem {
+  private _subTotal: number;
+
   constructor(
     private _product: Product,
     private _qty: number,
-    private _subTotal: number,
   ) {
     this._subTotal = this.qty * this.product.price;
   }
@@ -61,4 +62,8 @@ export default class Order {
   public get owner(): User { return this._owner }
 
   public get total(): number { return this._total }
+
+  public get status(): OrderStatus { return this._status }
+
+  public set status(status: OrderStatus) { this._status = status; }
 }

@@ -5,5 +5,7 @@ export default interface IProductRepository {
 
   findProductByName(name: string): Product | undefined | null;
 
-  createOne(product: Product): Product;
+  findById(id: number | string): Promise<Product>
+
+  createOne(name: string, price: number): Promise<Product>;
 }

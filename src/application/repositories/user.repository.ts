@@ -2,10 +2,14 @@ import { IUserRepository } from "../../domain/interfaces/user-repository.interfa
 import User from "../../domain/entities/user.entity";
 
 export default class UserRepository implements IUserRepository {
-  private readonly users: User[] = [new User(1, 'Caio', 'Nobre', '100.100.100.92', 18)];
+  private readonly users: User[] = [new User(1, 'Caio', 'Nobre', 'dada@gmail.com', '100.100.100.92', 28, 'caio123')];
 
   findOneById(id: number | string): Promise<User> {
     return Promise.resolve(this.users.find((user) => user.id === id))
+  }
+
+  findByEmail(email: string): Promise<User> {
+    return Promise.resolve(this.users.find((user) => user.email === email))
   }
 
   createOne(user: User): User {

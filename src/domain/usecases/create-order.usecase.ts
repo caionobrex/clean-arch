@@ -8,9 +8,9 @@ export default class CreateOrder {
     private readonly userRepository: IUserRepository,
   ) {}
 
-  async execute(userId: number, items: OrderItem[]): Promise<Order> {
+  async execute(userId: number | string, items: OrderItem[]): Promise<Order> {
     const user = await this.userRepository.findOneById(userId)
     if (items.length === 0) throw new Error('An order cannot be empty')
-    return this.orderRepository.createOne({ id: 1, createdAt: new Date(), owner: user, items })
+    return this.orderRepository.createOne({ createdAt: new Date(), owner: user, items })
   }
 }

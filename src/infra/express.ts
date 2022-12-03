@@ -2,7 +2,17 @@ const express = require('express')
 const app = express()
 import { ProductController } from '../application/controllers/product.controller'
 import { CreateProductDto } from '../application/dtos/create-product.dto';
-import InMemoryProductRepository from '../application/repositories/in-memory.repository'
+import ProductRepository from '../application/repositories/product.repository'
+import { JwtService } from '../application/services/jwt.service';
+
+class AuthenticationMiddleware {
+  fn(req, res, next) {
+    const jwtService = new JwtService()
+    if (!req.headers.authorization) return res.status(401).end();
+    if (!jwtService.verify(req.headers.authorization)) return res.status(401).end();
+    next()
+  }
+}
 
 class ExpressProductControllerAdapter {
   private readonly productController: ProductController;
@@ -17,10 +27,14 @@ class ExpressProductControllerAdapter {
   }
 }
 
-app.get('/create-product', (req, res) => {
-  new ExpressProductControllerAdapter(new ProductController(new InMemoryProductRepository())).createProduct(req, res)
+app.get('/products', (req, res) => {})
+app.post('/products', (req, res) => {
+  new ExpressProductControllerAdapter(new ProductController(new ProductRepository())).createProduct(req, res)
 })
 
-app.post('/create-order', (req, res) => {})
+app.get('/users/orders', new AuthenticationMiddleware().fn, (req, res) => {})
+app.get('/users/cart', new AuthenticationMiddleware().fn, (req, res) => {})
+
+app.post('/checkout', new AuthenticationMiddleware().fn, (req, res) => {})
 
 export default app

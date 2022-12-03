@@ -1,5 +1,5 @@
-import { IUserRepository } from "../interfaces/user-repository.interface";
-import User from "../entities/user.entity";
+import { IUserRepository } from "../src/domain/interfaces/user-repository.interface";
+import User from "../src/domain/entities/user.entity";
 
 export class Deposit {
   constructor(private readonly userRepository: IUserRepository) {}

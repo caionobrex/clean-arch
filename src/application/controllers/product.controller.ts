@@ -7,8 +7,8 @@ import { CreateProductDto } from "../dtos/create-product.dto";
 export class ProductController {
   constructor(private readonly productRepository: IProductRepository) {}
 
-  createProduct(productDto: CreateProductDto): CreateProductResponseDto {
-    const product: Product = new CreateProduct(this.productRepository).execute({ name: productDto.name, price: productDto.price });
+  async createProduct(productDto: CreateProductDto): Promise<CreateProductResponseDto> {
+    const product: Product = await new CreateProduct(this.productRepository).execute({ name: productDto.name, price: productDto.price });
     return new CreateProductResponseDto(
       product.name,
       product.price,

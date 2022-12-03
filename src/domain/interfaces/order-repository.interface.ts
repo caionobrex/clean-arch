@@ -1,5 +1,4 @@
 import Order, { OrderItem } from "../entities/order.entity";
-import Product from "../entities/product.entity";
 import User from "../entities/user.entity";
 
 export interface IOrderRepository {
@@ -9,5 +8,7 @@ export interface IOrderRepository {
 
   findOrdersByUserId(userId: number | string): Promise<Order[]>;
 
-  createOne({  id, items, createdAt, owner }: { id: number; items: OrderItem[]; createdAt: Date, owner: User }): Promise<Order>
+  updateOne(orderId: string | number, order: Order): Promise<Order>
+
+  createOne({ items, createdAt, owner }: Required<{ items: OrderItem[]; createdAt: Date, owner: User }>): Promise<Order>
 }

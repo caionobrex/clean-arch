@@ -7,6 +7,6 @@
     "strictNullChecks": false,
     "experimentalDecorators": true,
   },
-  "include": ["./*.ts", "src/**/*"],
+  "include": ["./*.ts", "src/**/*", "tests/withdraw.usecase.ts", "tests/deposit.usecase.ts"],
   "exclude": ["node_modules", "**/*.spec.ts", "**/*.test.ts"]
 }

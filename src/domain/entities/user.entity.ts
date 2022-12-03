@@ -1,21 +1,22 @@
-import Order from "./order.entity";
-
 export default class User {
   private _id: number | string;
   private _firstName: string;
   private _lastName: string;
+  private _email: string;
   private _cpf: string;
   private _age: number;
   private _balance: number;
-  private _orders: Order[];
+  private _password: string;
 
-  constructor(id: number, firstName: string, lastName: string, cpf: string, age: number, balance: number = 0) {
+  constructor(id: number, firstName: string, lastName: string, email: string, cpf: string, age: number, password: string, balance: number = 0) {
     this._id = id;
     this.firstName = firstName;
     this.lastName = lastName;
+    this._email = email;
     this._cpf = cpf;
     this.age = age;
     this._balance = balance;
+    this.password = password;
   }
 
   public set firstName(firstName: string) {
@@ -37,11 +38,18 @@ export default class User {
     this._age = age;
   }
 
+  public set password(password: string) { this._password = password; }
+
   public get id(): number | string { return this._id; }
 
   public get cpf(): string { return this._cpf; }
 
+  public get password(): string { return this._password; }
+
   public get age(): number { return this._age; }
 
   public get balance(): number { return this._balance; }
+
+  public get email(): string { return this._email; }
+
 }
